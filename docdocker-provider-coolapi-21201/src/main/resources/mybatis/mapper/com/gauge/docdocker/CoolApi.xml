@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gauge.docdocker.dao.ICoolApiDAO">
+		<select id="findById" resultType="CoolApi" parameterType="long">
+		SELECT api_id,api_name,api_desc FROM cool_api WHERE api_id=#{api_id} ;
+	</select>
+	<select id="findAll" resultType="CoolApi">
+		SELECT api_id,api_name,api_desc FROM cool_api ;
+	</select>
+	<insert id="doCreate" parameterType="CoolApi">
+		INSERT INTO cool_api(api_name,api_desc) VALUES (#{api_name},database()) ;
+	</insert>
+</mapper>

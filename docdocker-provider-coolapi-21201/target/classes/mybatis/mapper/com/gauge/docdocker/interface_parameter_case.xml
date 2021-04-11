@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gauge.docdocker.dao.IParameterCaseDAO">
+		<select id="getEntity" resultType="interface_parameter_case" parameterType="String">
+		SELECT key_id,code,action_name,service_name,name,value,path,operate_dt,dev_operate_by,test_operate_by FROM interface_parameter_case WHERE code=#{code} ;
+	</select>
+	<select id="getList" resultType="interface_parameter_case">
+		SELECT key_id,code,action_name,service_name,name,value,path,operate_dt,dev_operate_by,test_operate_by FROM interface_parameter_case ;
+	</select>
+	<insert id="addCase" parameterType="interface_parameter_case">
+		INSERT INTO interface_parameter_case(key_id,code,action_name,service_name,name,value,path,operate_dt,dev_operate_by,test_operate_by,param_id) VALUES (#{key_id},#{code},#{action_name},#{service_name},#{name},#{value},#{path},#{operate_dt},#{dev_operate_by},#{test_operate_by},#{param_id}} ) ;
+	</insert>
+</mapper>

@@ -19,3 +19,9 @@
 
 127.0.0.1	client.com
 
+4)服务端
+
+http://paramcase-21201.com:21201/case/list
+
+5）测试端
+http://client.com:666/consumer/case/list

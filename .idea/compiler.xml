@@ -6,9 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="docdocker-consumer-666" />
         <module name="docdocker-provider-coolapi-21201" />
         <module name="docdocker-viewmodel" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="docdocker-provider-parametercase-21201" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

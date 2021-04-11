@@ -139,6 +139,7 @@
 <!--        <module>gauge_doc_docker-eureka-7002</module>-->
 <!--        <module>gauge_doc_docker-eureka-7003</module>-->
         <module>docdocker-provider-coolapi-21201</module>
+        <module>docdocker-consumer-666</module>
 
     </modules>
 </project>

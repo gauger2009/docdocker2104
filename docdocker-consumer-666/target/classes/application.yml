@@ -1,0 +1,8 @@
+server:
+  port: 666
+
+eureka:
+  client:
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://gauge:sparksubmit666@eureka-10001.com:10001/eureka,http://gauge:sparksubmit666@eureka-10002.com:10002/eureka,http://gauge:sparksubmit666@eureka-10003.com:10003/eureka

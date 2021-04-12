@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/docdocker-provider-parametercase-21201/docdocker-provider-coolapi-21201.iml" filepath="$PROJECT_DIR$/docdocker-provider-parametercase-21201/docdocker-provider-coolapi-21201.iml" />
+      <module fileurl="file://$PROJECT_DIR$/docdocker-viewmodel/docdocker-viewmodel.iml" filepath="$PROJECT_DIR$/docdocker-viewmodel/docdocker-viewmodel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gauge_doc_docker.iml" filepath="$PROJECT_DIR$/gauge_doc_docker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/docdocker-consumer-666/microcloud-consumer-80.iml" filepath="$PROJECT_DIR$/docdocker-consumer-666/microcloud-consumer-80.iml" />
+    </modules>
+  </component>
+</project>

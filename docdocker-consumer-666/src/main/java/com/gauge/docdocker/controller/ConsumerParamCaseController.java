@@ -12,6 +12,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -53,6 +54,7 @@ public class ConsumerParamCaseController {
         return entity;
     }
 
+    @CrossOrigin(value = "http://localhost:55022")//接口接受来自http://localhost:55022 地址的请求
     @SuppressWarnings("unchecked")
     @RequestMapping(value = "/consumer/case/list")
     public Object list() {
@@ -62,6 +64,14 @@ public class ConsumerParamCaseController {
 //                "【*** ServiceInstance ***】host = " + serviceInstance.getHost()
 //                        + "、port = " + serviceInstance.getPort()
 //                        + "、serviceId = " + serviceInstance.getServiceId());
+
+//        HttpHeaders headers = new HttpHeaders();
+//        this.headers.add("Accept", "application/json");
+//        this.headers.add("Accept-Encoding", "gzip");
+//        this.headers.add("Content-Encoding", "UTF-8");
+//        this.headers.add("Content-Type", "application/json;charset=UTF-8");
+//        this.headers.add("Access-Control-Allow-Origin", "http://localhost:55022/");
+
         List<interface_parameter_case> allEntity = this.restTemplate
                 .exchange(DEPT_LIST_URL, HttpMethod.GET,
                         new HttpEntity<Object>(this.headers), List.class)
@@ -72,6 +82,8 @@ public class ConsumerParamCaseController {
 //    @SuppressWarnings("unchecked")
 //    @RequestMapping(value = "/consumer/case/list")
 //    public Object listCase() {
+//        this.headers.add("Access-Control-Allow-Origin", "*");
+//        HttpEntity<String> postEntity = new HttpEntity<>(dataStr, headers);
 //        List<interface_parameter_case> allEntity = this.restTemplate
 //                .getForObject(DEPT_LIST_URL,  List.class);
 //

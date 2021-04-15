@@ -29,5 +29,14 @@ public class ParameterCaseServiceImpl implements IParameterCaseService {
         return this.parameterCaseDAO.getList();
     }
 
+    @Override
+    public List<interface_parameter_case> getListByPm(  String param_id) {
+        return this.parameterCaseDAO.getListByPm( param_id);
+    }
+
+    @Override
+    public boolean editCase(String value,String case_id ) {
+        return  this.parameterCaseDAO.editCase(value,case_id);
+    }
 
 }

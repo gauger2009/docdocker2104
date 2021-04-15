@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gauge.docdocker.dao.CiJobDAO">
+
+	<select id="getAllJobList" resultType="ci_job">
+		select key_id, job_name, project_path, copy_name, update_value, remote_url, build_order, is_active, project_by from ci_job order by build_order;
+	</select>
+
+</mapper>

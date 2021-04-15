@@ -1,0 +1,181 @@
+<?xml version="1.0"?>
+<project
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+        xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.gauge.docdocker</groupId>
+        <artifactId>gauge_doc_docker</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>docdocker-provider-jenkinsjob</artifactId>
+    <name>docdocker-provider-jenkinsjob</name>
+    <url>http://maven.apache.org</url>
+    <packaging>jar</packaging>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-eureka</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <!--    <dependency>-->
+        <!--      <groupId>com.gauge.docdocker</groupId>-->
+        <!--      <artifactId>docdocker-api</artifactId>-->
+        <!--    </dependency>-->
+        <!--    <dependency>-->
+        <!--      <groupId>com.gauge.docdocker</groupId>-->
+        <!--      <artifactId>docdocker-security</artifactId>-->
+        <!--    </dependency>-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jetty</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>springloaded</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.gauge.docdocker</groupId>
+            <artifactId>docdocker-viewmodel</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.gauge.docdocker</groupId>
+            <artifactId>docdocker-viewmodel</artifactId>
+        </dependency>
+
+        <!--    <dependency>-->
+
+        <!--      <groupId>org.springframework.boot</groupId>-->
+        <!--      <artifactId>spring-boot-starter-web</artifactId>-->
+
+        <!--      <exclusions>-->
+        <!--        <exclusion>-->
+        <!--          <groupId>org.springframework.boot</groupId>-->
+        <!--          <artifactId>spring-boot-starter-logging</artifactId>-->
+        <!--        </exclusion>-->
+
+        <!--        <exclusion>-->
+        <!--          <groupId>org.springframework.boot</groupId>-->
+        <!--          <artifactId>spring-boot-starter-tomcat</artifactId>-->
+        <!--        </exclusion>-->
+        <!--      </exclusions>-->
+        <!--    </dependency>-->
+
+
+        <!--    <dependency>-->
+        <!--      <groupId>org.springframework.boot</groupId>-->
+        <!--      <artifactId>spring-boot-starter-tomcat</artifactId>-->
+        <!--      <scope>provided</scope>-->
+        <!--    </dependency>-->
+        <!--    <dependency>-->
+
+
+        <!--      <groupId>org.apache.tomcat.embed</groupId>-->
+        <!--      <artifactId>tomcat-embed-jasper</artifactId>-->
+        <!--      <scope>provided</scope>-->
+        <!--    </dependency>-->
+
+        <!--第一种 -->
+        <!--    <dependency>-->
+        <!--      <groupId>javax.servlet</groupId>-->
+        <!--      <artifactId>javax.servlet-api</artifactId>-->
+        <!--      <version>3.1.0</version>-->
+        <!--      <scope>provided</scope>-->
+        <!--    </dependency>-->
+        <!--第二种 -->
+        <!--    <dependency>-->
+        <!--      <groupId>org.apache.tomcat</groupId>-->
+        <!--      <artifactId>tomcat-servlet-api</artifactId>-->
+        <!--      <version>8.0.36</version>-->
+        <!--      <scope>provided</scope>-->
+        <!--    </dependency>-->
+    </dependencies>
+    <build>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <!--      <plugin>-->
+            <!--        <groupId>org.springframework.boot</groupId>-->
+            <!--        <artifactId>spring-boot-maven-plugin</artifactId>-->
+            <!--      </plugin>-->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <!-- 指定该Main Class为全局的唯一入口 -->
+                    <mainClass>com.gauge.docdocker.ParameterCaseApi_21201_StartSpringCloudApplication</mainClass>
+                    <layout>ZIP</layout>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <!--可以把依赖的包都打包到生成的Jar包中-->
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+</project>

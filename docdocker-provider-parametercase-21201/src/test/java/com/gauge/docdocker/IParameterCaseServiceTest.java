@@ -89,5 +89,22 @@ public class IParameterCaseServiceTest {
 
         System.out.println(this.parameterCaseService.getList());
     }
+    @Test
+    public void testListByPm() {
+//        String service_name="PayrollResult";
+//        String action_name="InvokePayrollPostingV5";
+        String param_id="341ceb0c-2cbf-4b7f-9dab-1c131f7c2980";
+        System.out.println(this.parameterCaseService.getListByPm( param_id));
+    }
+
+    @Test
+    public void testEditCase() {
+//        String service_name="PayrollResult";
+//        String action_name="InvokePayrollPostingV5";
+        String value = "null/N/A";
+        String case_id="8fcce331-af68-4ff3-8118-81fa2b3be63b";
+        System.out.println(this.parameterCaseService.editCase( value,case_id));
+    }
+
 
 }

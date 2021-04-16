@@ -10,8 +10,8 @@
     <version>1.0-SNAPSHOT</version>
 
   </parent>
-  <artifactId>docdocker-provider-coolapi-21201</artifactId>
-  <name>docdocker-provider-coolapi-21201</name>
+  <artifactId>docdocker-provider-parametercase-21201</artifactId>
+  <name>docdocker-provider-parametercase-21201</name>
   <url>http://maven.apache.org</url>
   <packaging>jar</packaging>
   <properties>
@@ -91,10 +91,13 @@
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+    <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-maven-plugin -->
     <dependency>
-      <groupId>com.gauge.docdocker</groupId>
-      <artifactId>docdocker-viewmodel</artifactId>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-maven-plugin</artifactId>
+      <version>2.3.3.RELEASE</version>
     </dependency>
+
 
     <!--    <dependency>-->
 
@@ -155,13 +158,16 @@
           <target>1.8</target>
         </configuration>
       </plugin>
+
 <!--      <plugin>-->
 <!--        <groupId>org.springframework.boot</groupId>-->
 <!--        <artifactId>spring-boot-maven-plugin</artifactId>-->
 <!--      </plugin>-->
+
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+        <version>2.3.3.RELEASE</version>
         <configuration>
           <!-- 指定该Main Class为全局的唯一入口 -->
           <mainClass>com.gauge.docdocker.ParameterCaseApi_21201_StartSpringCloudApplication</mainClass>

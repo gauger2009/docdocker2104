@@ -12,5 +12,5 @@ public interface IParameterCaseService {
     public List<interface_parameter_case> getList() ;
 
     public List<interface_parameter_case> getListByPm( String param_id);
-    public boolean editCase(String value,String case_id ) ;
+    public boolean editCase(String value,String name,String case_id ) ;
 }

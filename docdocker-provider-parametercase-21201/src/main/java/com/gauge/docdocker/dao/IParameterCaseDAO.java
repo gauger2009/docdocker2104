@@ -13,5 +13,5 @@ public interface IParameterCaseDAO {
     public interface_parameter_case getEntity(String code) ;
     public List<interface_parameter_case> getList() ;
     public List<interface_parameter_case> getListByPm(  String param_id) ;
-    public boolean editCase(@Param("value") String value,@Param("case_id")String case_id ) ;
+    public boolean editCase(@Param("value") String value,@Param("name") String name,@Param("case_id")String case_id ) ;
 }

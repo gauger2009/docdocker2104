@@ -35,8 +35,8 @@ public class ParameterCaseServiceImpl implements IParameterCaseService {
     }
 
     @Override
-    public boolean editCase(String value,String case_id ) {
-        return  this.parameterCaseDAO.editCase(value,case_id);
+    public boolean editCase(String value,String name,String case_id ) {
+        return  this.parameterCaseDAO.editCase(value,name,case_id);
     }
 
 }

@@ -71,8 +71,8 @@ public class ParameterCaseRest {
     @CrossOrigin(origins = "*",maxAge = 3600)
     // @CrossOrigin(value = "http://localhost:55022,http://192.168.1.5:13579/")//接口接受来自http://localhost:55022 地址的请求
     @RequestMapping(value="/case/edit",method=RequestMethod.POST)
-    public Object edit(String value,String case_id) {
-        return this.parameterCaseService.editCase(value,case_id) ;
+    public Object edit(String value,String name,String case_id) {
+        return this.parameterCaseService.editCase(value,name,case_id) ;
     }
 
     //实现跨域注解
@@ -85,6 +85,7 @@ public class ParameterCaseRest {
     public Object editPlus(@RequestBody interface_parameter_case interface_parameter_case) {
         String value = interface_parameter_case.getvalue();
         String case_id=interface_parameter_case.getKey_id();
-        return this.parameterCaseService.editCase(value,case_id) ;
+        String name = interface_parameter_case.getname();
+        return this.parameterCaseService.editCase(value,name,case_id) ;
     }
 }

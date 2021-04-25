@@ -44,15 +44,16 @@ public class ParameterCaseRest {
     public Object add(@RequestBody interface_parameter_case interface_parameter_case) {
         return this.parameterCaseService.addCase(interface_parameter_case) ;
     }
-
-    @CrossOrigin(value = "http://localhost:55022")//接口接受来自http://localhost:55022 地址的请求
+    @CrossOrigin(origins = "*",maxAge = 3600)
+    //@CrossOrigin(value = "http://localhost:55022")//接口接受来自http://localhost:55022 地址的请求
     @RequestMapping(value="/case/list",method=RequestMethod.GET)
     public Object list() {
         return this.parameterCaseService.getList() ;
     }
 
 
-    @CrossOrigin(value = "http://localhost:55022")//接口接受来自http://localhost:55022 地址的请求
+    @CrossOrigin(origins = "*",maxAge = 3600)
+    // @CrossOrigin(value = "http://localhost:55022,http://192.168.1.5:13579/")//接口接受来自http://localhost:55022 地址的请求
     @RequestMapping(value="/case/listbypm",method=RequestMethod.GET)
     public Object listByPm(String param_id) {
         return this.parameterCaseService.getListByPm(param_id) ;
@@ -67,18 +68,24 @@ public class ParameterCaseRest {
 
 
     // http://paramcase-21201.com:21201/case/edit?value=N/A&case_id=8fcce331-af68-4ff3-8118-81fa2b3be63b
-    @CrossOrigin(value = "http://localhost:55022")//接口接受来自http://localhost:55022 地址的请求
+    @CrossOrigin(origins = "*",maxAge = 3600)
+    // @CrossOrigin(value = "http://localhost:55022,http://192.168.1.5:13579/")//接口接受来自http://localhost:55022 地址的请求
     @RequestMapping(value="/case/edit",method=RequestMethod.POST)
-    public Object edit(String value,String case_id) {
-        return this.parameterCaseService.editCase(value,case_id) ;
+    public Object edit(String value,String name,String case_id) {
+        return this.parameterCaseService.editCase(value,name,case_id) ;
     }
 
-
-    @CrossOrigin(value = "http://localhost:55022")//接口接受来自http://localhost:55022 地址的请求
+    //实现跨域注解
+    //origin="*"代表所有域名都可访问
+    //maxAge飞行前响应的缓存持续时间的最大年龄，简单来说就是Cookie的有效期 单位为秒
+    //若maxAge是负数,则代表为临时Cookie,不会被持久化,Cookie信息保存在浏览器内存中,浏览器关闭Cookie就消失
+    @CrossOrigin(origins = "*",maxAge = 3600)
+   // @CrossOrigin(value = "http://localhost:55022,http://192.168.1.5:13579/")//接口接受来自http://localhost:55022 地址的请求
     @RequestMapping(value="/case/editplus",method=RequestMethod.POST)
     public Object editPlus(@RequestBody interface_parameter_case interface_parameter_case) {
         String value = interface_parameter_case.getvalue();
         String case_id=interface_parameter_case.getKey_id();
-        return this.parameterCaseService.editCase(value,case_id) ;
+        String name = interface_parameter_case.getname();
+        return this.parameterCaseService.editCase(value,name,case_id) ;
     }
 }

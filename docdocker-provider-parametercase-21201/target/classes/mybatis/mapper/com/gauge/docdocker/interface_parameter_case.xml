@@ -17,7 +17,7 @@
 	</insert>
 	<update id="editCase"  >
 		UPDATE interface_parameter_case
-		SET value = #{value}
+		SET value = #{value},name=#{name}
 		WHERE key_id = #{case_id}
 
 	</update>

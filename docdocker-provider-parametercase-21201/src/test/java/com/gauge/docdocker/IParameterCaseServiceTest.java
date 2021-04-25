@@ -102,8 +102,9 @@ public class IParameterCaseServiceTest {
 //        String service_name="PayrollResult";
 //        String action_name="InvokePayrollPostingV5";
         String value = "null/N/A";
+        String name = "_场景二_";
         String case_id="8fcce331-af68-4ff3-8118-81fa2b3be63b";
-        System.out.println(this.parameterCaseService.editCase( value,case_id));
+        System.out.println(this.parameterCaseService.editCase( value,name,case_id));
     }
 
 

@@ -148,7 +148,7 @@
 <!--        <module>gauge_doc_docker-eureka-7003</module>-->
         <module>docdocker-provider-parametercase-21201</module>
         <module>docdocker-consumer-666</module>
-
+        <module>docdocker-provider-jenkinsjob</module>
     </modules>
 </project>
 

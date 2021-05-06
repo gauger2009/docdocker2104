@@ -40,16 +40,16 @@ public class ConsumerParamCaseController {
     private LoadBalancerClient loadBalancerClient ;
     @RequestMapping(value = "/consumer/case/get")
     public Object getCase(String code) {
-            ServiceInstance serviceInstance = this.loadBalancerClient.choose("paramcase-21201.com:21201/") ;
+            // ServiceInstance serviceInstance = this.loadBalancerClient.choose("paramcase-21201.com:21201/") ;
         // 使用eureka之后，这里写的是在eureka中注册的服务名称，而非之前的原始服务地址！
         //ServiceInstance serviceInstance = this.loadBalancerClient.choose("MICROCLOUD-PROVIDER-CASE") ;
 //        ServiceInstance serviceInstance = this.loadBalancerClient.choose(DEPT_REST_TOPIC);
-        System.out.println(
-                "【*** ServiceInstance ***】host = " + serviceInstance.getHost()
-                        + "、port = " + serviceInstance.getPort()
-                        + "、serviceId = " + serviceInstance.getServiceId());
+//         System.out.println(
+//                 "【*** ServiceInstance ***】host = " + serviceInstance.getHost()
+//                         + "、port = " + serviceInstance.getPort()
+//                         + "、serviceId = " + serviceInstance.getServiceId());
         interface_parameter_case entity = this.restTemplate
-                .exchange(DEPT_REST_TOPIC + code, HttpMethod.GET,new HttpEntity<Object>(this.headers), interface_parameter_case.class)
+                .exchange(DEPT_GET_URL + code, HttpMethod.GET,new HttpEntity<Object>(this.headers), interface_parameter_case.class)
                 .getBody();
         return entity;
     }

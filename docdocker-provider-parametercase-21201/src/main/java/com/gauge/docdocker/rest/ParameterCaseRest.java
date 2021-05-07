@@ -38,6 +38,10 @@ public class ParameterCaseRest {
         return this.parameterCaseService.getEntity(code) ;
     }
 
+    @RequestMapping(value="/case/getById/{key_id}",method= RequestMethod.GET)
+    public Object getById(@PathVariable("key_id") String key_id) {
+        return this.parameterCaseService.getEntityId(key_id) ;
+    }
 
     @CrossOrigin(value = "http://localhost:55022")//接口接受来自http://localhost:55022 地址的请求
     @RequestMapping(value="/case/add",method=RequestMethod.POST)

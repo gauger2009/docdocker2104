@@ -25,6 +25,11 @@ public class ParameterCaseServiceImpl implements IParameterCaseService {
     }
 
     @Override
+    public interface_parameter_case getEntityId(String key_id) {
+        return this.parameterCaseDAO.getEntityId(key_id);
+    }
+
+    @Override
     public List<interface_parameter_case> getList() {
         return this.parameterCaseDAO.getList();
     }

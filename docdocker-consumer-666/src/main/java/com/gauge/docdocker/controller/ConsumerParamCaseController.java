@@ -22,7 +22,9 @@ import org.springframework.web.client.RestTemplate;
 public class ConsumerParamCaseController {
      // 1）使用eureka之前，客户端直接操作微服务原始地址
     	public static final String DEPT_GET_URL = "http://paramcase-21201.com:21201/case/get/";
+    	public static final String DEPT_GETBYID_URL = "http://paramcase-21201.com:21201/case/getById/";
     	public static final String DEPT_LIST_URL = "http://paramcase-21201.com:21201/case/list/";
+        public static final String DEPT_LISTBYPM_URL = "http://paramcase-21201.com:21201/case/listbypm";
     	public static final String DEPT_ADD_URL = "http://paramcase-21201.com:21201/case/add?name=";
 
     //  2） 使用eureka之后，这里写的是在eureka中注册的服务名称，而非之前的原始服务地址！
@@ -38,6 +40,26 @@ public class ConsumerParamCaseController {
     private HttpHeaders headers;
     @Resource
     private LoadBalancerClient loadBalancerClient ;
+
+    @RequestMapping(value = "/consumer/case/listbypm")
+    public Object listByPm(String param_id){
+
+        List<interface_parameter_case> list = this.restTemplate
+                .exchange(DEPT_LISTBYPM_URL +"?param_id="+ param_id, HttpMethod.GET, new HttpEntity<Object>(this.headers), List.class)
+                .getBody();
+        return list;
+
+    }
+
+    @RequestMapping(value = "/consumer/case/getById")
+    public Object getCaseId(String key_id) {
+
+        interface_parameter_case entity = this.restTemplate
+                .exchange(DEPT_GETBYID_URL + key_id, HttpMethod.GET,new HttpEntity<Object>(this.headers), interface_parameter_case.class)
+                .getBody();
+        return entity;
+    }
+
     @RequestMapping(value = "/consumer/case/get")
     public Object getCase(String code) {
             // ServiceInstance serviceInstance = this.loadBalancerClient.choose("paramcase-21201.com:21201/") ;

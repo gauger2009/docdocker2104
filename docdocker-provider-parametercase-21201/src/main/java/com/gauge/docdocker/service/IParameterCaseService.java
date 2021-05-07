@@ -9,6 +9,7 @@ public interface IParameterCaseService {
 
     public boolean addCase(interface_parameter_case vm) ;
     public interface_parameter_case getEntity(String code) ;
+    public interface_parameter_case getEntityId(String key_id) ;
     public List<interface_parameter_case> getList() ;
 
     public List<interface_parameter_case> getListByPm( String param_id);

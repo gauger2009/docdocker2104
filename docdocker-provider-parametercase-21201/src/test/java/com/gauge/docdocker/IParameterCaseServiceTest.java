@@ -107,5 +107,9 @@ public class IParameterCaseServiceTest {
         System.out.println(this.parameterCaseService.editCase( value,name,case_id));
     }
 
+    @Test
+    public void testGetById(){
+        System.out.println(this.parameterCaseService.getEntityId("00c8d750-5059-4451-8793-0b0476b3d27e"));
+    }
 
 }

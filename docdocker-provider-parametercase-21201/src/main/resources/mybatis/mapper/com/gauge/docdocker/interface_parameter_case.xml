@@ -16,7 +16,7 @@
 	</select>
 	<insert id="addCase" parameterType="interface_parameter_case">
 		INSERT INTO interface_parameter_case(key_id,code,action_name,service_name,name,value,path,operate_dt,dev_operate_by,test_operate_by,param_id)
-		VALUES (#{key_id},#{code},#{action_name},#{service_name},#{name},#{value},#{path},#{operate_dt},#{dev_operate_by},#{test_operate_by},#{param_id} ) ;
+		VALUES (uuid(),#{code},#{action_name},#{service_name},#{name},#{value},#{path},#{operate_dt},#{dev_operate_by},#{test_operate_by},#{param_id} ) ;
 	</insert>
 	<update id="editCase"  >
 		UPDATE interface_parameter_case

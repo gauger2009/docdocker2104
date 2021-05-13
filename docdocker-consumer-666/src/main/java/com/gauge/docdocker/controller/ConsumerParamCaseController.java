@@ -5,16 +5,17 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import com.gauge.docdocker.model.ResponseEntityModel;
+import com.gauge.docdocker.model.StatusEnum;
 import com.gauge.viewmodel.interface_parameter_case;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 
@@ -25,8 +26,8 @@ public class ConsumerParamCaseController {
     	public static final String DEPT_GETBYID_URL = "http://paramcase-21201.com:21201/case/getById/";
     	public static final String DEPT_LIST_URL = "http://paramcase-21201.com:21201/case/list/";
         public static final String DEPT_LISTBYPM_URL = "http://paramcase-21201.com:21201/case/listbypm";
-    	public static final String DEPT_ADD_URL = "http://paramcase-21201.com:21201/case/add?name=";
-
+    	public static final String DEPT_ADD_URL = "http://paramcase-21201.com:21201/case/add";
+        public static final String DEPT_EDITPLUS_URL = "http://paramcase-21201.com:21201/case/editplus";
     //  2） 使用eureka之后，这里写的是在eureka中注册的服务名称，而非之前的原始服务地址！
 //    public static final String CASE_GET_URL = "http://MICROCLOUD-PROVIDER-CASE/case/get/";
 //    public static final String CASE_LIST_URL = "http://MICROCLOUD-PROVIDER-CASE/case/list/";
@@ -34,12 +35,33 @@ public class ConsumerParamCaseController {
 
     public static final String DEPT_REST_TOPIC = "MICROCLOUD-PROVIDER-CASE";
 
+    @Autowired
+    private ResponseEntityModel responseEntityModel;
     @Resource
     private RestTemplate restTemplate;
     @Resource
     private HttpHeaders headers;
     @Resource
     private LoadBalancerClient loadBalancerClient ;
+
+    @RequestMapping(value = "/consumer/case/add",method = RequestMethod.POST)
+    public Object add(@RequestBody interface_parameter_case vm){
+        boolean isSuccess = this.restTemplate.exchange(
+                DEPT_ADD_URL,HttpMethod.POST, new HttpEntity<Object>(vm, this.headers),Boolean.class)
+                .getBody();
+        responseEntityModel.setData(isSuccess);
+        responseEntityModel.setMessage("");
+        responseEntityModel.setStatus(StatusEnum.SUCESS);
+        return responseEntityModel;
+    }
+
+    @RequestMapping(value = "/consumer/case/editplus",method = RequestMethod.POST)
+    public Object editplus(@RequestBody interface_parameter_case vm){
+        boolean isSuccess = this.restTemplate.exchange(
+                DEPT_EDITPLUS_URL,HttpMethod.POST, new HttpEntity<interface_parameter_case>(this.headers),Boolean.class)
+                .getBody();
+        return isSuccess;
+    }
 
     @RequestMapping(value = "/consumer/case/listbypm")
     public Object listByPm(String param_id){

@@ -1,0 +1,93 @@
+{
+	"info": {
+		"_postman_id": "3c883fff-7019-4afa-a020-96b63e5f05ec",
+		"name": "base_api_case",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/case/getById/{key_id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://paramcase-21201.com:21201/case/getById/00c8d750-5059-4451-8793-0b0476b3d27e"
+			},
+			"response": []
+		},
+		{
+			"name": "/case/listbypm",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://paramcase-21201.com:21201/case/listbypm?param_id=270d2fb8-362f-4493-a64e-02ca4dabfe5b",
+					"protocol": "http",
+					"host": [
+						"paramcase-21201",
+						"com"
+					],
+					"port": "21201",
+					"path": [
+						"case",
+						"listbypm"
+					],
+					"query": [
+						{
+							"key": "param_id",
+							"value": "270d2fb8-362f-4493-a64e-02ca4dabfe5b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/case/editplus",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=utf-8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"key_id\": \"00c8d750-5059-4451-8793-0b0476b3d27e\",\r\n    \"param_id\": \"270d2fb8-362f-4493-a64e-02ca4dabfe5b\",\r\n    \"code\": \"GetPayPlanRelateionTemplate\",\r\n    \"action_name\": \"GetPayPlanRelateionTemplate\",\r\n    \"service_name\": \"PayrollConfig\",\r\n    \"name\": \"GetPayPlanRelateionTemplate方法场景_1_X\",\r\n    \"value\": \"{\\\"UserToken\\\":\\\"\\\",\\\"Culture\\\":\\\"\\\"}\",\r\n    \"path\": \"api/PayrollConfig/GetPayPlanRelateionTemplate\",\r\n    \"operate_dt\": 1617870418000,\r\n    \"dev_operate_by\": \"richter\",\r\n    \"test_operate_by\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://paramcase-21201.com:21201/case/editplus"
+			},
+			"response": []
+		},
+		{
+			"name": "/case/add",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=utf-8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"key_id\": \"\",\r\n    \"param_id\": \"270d2fb8-362f-4493-a64e-02ca4dabfe5b\",\r\n    \"code\": \"GetPayPlanRelateionTemplate\",\r\n    \"action_name\": \"GetPayPlanRelateionTemplate\",\r\n    \"service_name\": \"PayrollConfig\",\r\n    \"name\": \"GetPayPlanRelateionTemplate方法场景_1_2\",\r\n    \"value\": \"{\\\"UserToken\\\":\\\"\\\",\\\"Culture\\\":\\\"\\\"}\",\r\n    \"path\": \"api/PayrollConfig/GetPayPlanRelateionTemplate\",\r\n    \"operate_dt\": 1617870418000,\r\n    \"dev_operate_by\": \"richter\",\r\n    \"test_operate_by\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://paramcase-21201.com:21201/case/add"
+			},
+			"response": []
+		}
+	]
+}

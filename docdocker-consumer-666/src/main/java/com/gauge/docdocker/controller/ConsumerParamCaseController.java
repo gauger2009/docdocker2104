@@ -35,7 +35,7 @@ public class ConsumerParamCaseController {
 
     public static final String DEPT_REST_TOPIC = "MICROCLOUD-PROVIDER-CASE";
 
-    @Autowired
+    @Resource
     private ResponseEntityModel responseEntityModel;
     @Resource
     private RestTemplate restTemplate;
@@ -58,7 +58,8 @@ public class ConsumerParamCaseController {
     @RequestMapping(value = "/consumer/case/editplus",method = RequestMethod.POST)
     public Object editplus(@RequestBody interface_parameter_case vm){
         boolean isSuccess = this.restTemplate.exchange(
-                DEPT_EDITPLUS_URL,HttpMethod.POST, new HttpEntity<interface_parameter_case>(this.headers),Boolean.class)
+                // 请求URI,执行的HTTP方法,将请求实体写入请求, 返回实体
+                DEPT_EDITPLUS_URL,HttpMethod.POST, new HttpEntity<interface_parameter_case>(vm, this.headers),Boolean.class)
                 .getBody();
         return isSuccess;
     }

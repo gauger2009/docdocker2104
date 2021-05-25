@@ -1,14 +1,14 @@
 package com.gauge.docdocker.model;
 
 
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 /**
  * @Author: Andrew
  * @Date: 2021/5/11 23:00
  * @Description:
  */
-@Configuration
+@Component
 public class ResponseEntityModel {
     private StatusEnum status;
     private String message;

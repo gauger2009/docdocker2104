@@ -147,7 +147,7 @@
 <!--    </dependency>-->
   </dependencies>
   <build>
-
+    <finalName>docdocker-provider-parametercase-21201</finalName>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

@@ -8,9 +8,11 @@ import com.gauge.viewmodel.CoolApi;
 import org.apache.ibatis.annotations.Mapper;
 
 
-    @Mapper
-    public interface ICoolApiDAO {
-        public boolean doCreate(CoolApi vm) ;
-        public CoolApi findById(Long id) ;
-        public List<CoolApi> findAll() ;
-    }
+@Mapper
+public interface ICoolApiDAO {
+    public boolean doCreate(CoolApi vm);
+
+    public CoolApi findById(Long id);
+
+    public List<CoolApi> findAll();
+}

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gauge.docdocker.dao.IParameterDAO">
+    <!--
+        private String key_id;
+        private String action_id;
+        private String code;
+        private String action_name;
+        private String service_name;
+        private String name;
+        private boolean is_input;
+        private String value;
+        private String dev_operate_by;
+        private String test_operate_by;
+        private Date operate_dt;
+        private Date last_update_dt;
+    -->
+    <resultMap id="IParameterResultMap" type="interface_parameter">
+        <id property="key_id" column="key_id"/>
+        <result property="action_id" column="action_id"></result>
+        <result property="code" column="code"></result>
+        <result property="code" column="code"></result>
+        <result property="action_name" column="action_name"></result>
+        <result property="service_name" column="service_name"></result>
+        <result property="name" column="name"></result>
+        <result property="is_input" column="is_input"></result>
+        <result property="value" column="value"></result>
+        <result property="dev_operate_by" column="dev_operate_by"></result>
+        <result property="test_operate_by" column="test_operate_by"></result>
+        <result property="operate_dt" column="operate_dt"></result>
+        <result property="last_update_dt" column="last_update_dt"></result>
+    </resultMap>
+
+    <sql id="IParamterColumn">
+		key_id,
+		action_id,
+		code,
+		action_name,
+		service_name,
+		name,
+		is_input,
+		value,
+		dev_operate_by,
+		test_operate_by,
+        operate_dt,
+		last_update_dt
+	</sql>
+
+    <select id="getEntity" resultMap="IParameterResultMap">
+        SELECT
+        <include refid="IParamterColumn"/>
+        FROM interface_parameter WHERE key_id=#{key_id,jdbcType=VARCHAR} ;
+    </select>
+
+    <update id="edit">
+        update interface_parameter
+        <set>
+            <if test="action_id != null">action_id = #{action_id},</if>
+            <if test="code != null">code = #{code},</if>
+            <if test="action_name != null">action_name = #{action_name},</if>
+            <if test="name != null">name = #{name},</if>
+            <if test="is_input != null">is_input = #{is_input},</if>
+            <if test="value != null">value = #{value},</if>
+            <if test="dev_operate_by != null">dev_operate_by = #{dev_operate_by},</if>
+            <if test="test_operate_by != null">test_operate_by = #{test_operate_by}</if>
+        </set>
+        where key_id = #{key_id}
+    </update>
+
+    <insert id="addIParameter">
+        insert into interface_parameter
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            key_id,
+            <if test="action_id != null">action_id,</if>
+            <if test="code != null">code,</if>
+            <if test="action_name != null">action_name,</if>
+            <if test="name != null">name,</if>
+            <if test="is_input != null">is_input,</if>
+            <if test="value != null">value,</if>
+            <if test="dev_operate_by != null">dev_operate_by,</if>
+            <if test="test_operate_by != null">test_operate_by,</if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            uuid(),
+            <if test="action_id != null">#{action_id, jdbcType=VARCHAR},</if>
+            <if test="code != null">#{code, jdbcType=VARCHAR},</if>
+            <if test="action_name != null">#{action_name, jdbcType=VARCHAR},</if>
+            <if test="name != null">#{name, jdbcType=VARCHAR},</if>
+            <if test="is_input != null">#{is_input},</if>
+            <if test="value != null">#{value, jdbcType=VARCHAR},</if>
+            <if test="dev_operate_by != null">#{dev_operate_by, jdbcType=VARCHAR},</if>
+            <if test="test_operate_by != null">#{test_operate_by, jdbcType=VARCHAR}</if>
+        </trim>
+    </insert>
+
+</mapper>

@@ -47,7 +47,7 @@
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
-                <version>5.0.4</version>
+                <version>8.0.13</version>
             </dependency>
             <dependency>
                 <groupId>com.alibaba</groupId>
@@ -131,7 +131,6 @@
         </plugins>
     </build>
     <modules>
-        <module>docdocker-viewmodel</module>
 <!--        <module>gauge_doc_docker-service</module>-->
 <!--        <module>gauge_doc_docker-provider-hystrix-8001</module>-->
 <!--        <module>gauge_doc_docker-provider-dept-8001</module>-->
@@ -146,6 +145,7 @@
 <!--        <module>gauge_doc_docker-eureka-7001</module>-->
 <!--        <module>gauge_doc_docker-eureka-7002</module>-->
 <!--        <module>gauge_doc_docker-eureka-7003</module>-->
+        <module>docdocker-viewmodel</module>
         <module>docdocker-provider-parametercase-21201</module>
         <module>docdocker-consumer-666</module>
         <module>docdocker-provider-jenkinsjob</module>

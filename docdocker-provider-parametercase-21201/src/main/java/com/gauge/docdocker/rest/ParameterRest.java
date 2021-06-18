@@ -1,10 +1,8 @@
 package com.gauge.docdocker.rest;
 
-import com.gauge.docdocker.service.IParameterCaseService;
 import com.gauge.docdocker.service.IParameterService;
-import com.gauge.viewmodel.interface_parameter;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.web.bind.annotation.*;
+import com.gauge.viewmodel.interface_parameter;
 
 import javax.annotation.Resource;
 

@@ -33,10 +33,10 @@ mybatis:
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource    # 配置当前要使用的数据源的操作类型
-    driver-class-name: org.gjt.mm.mysql.Driver      # 配置MySQL的驱动程序类
+    driver-class-name: com.mysql.cj.jdbc.Driver      # 配置MySQL的驱动程序类 org.gjt.mm.mysql.Driver
     url: jdbc:mysql://base-api-mysql.com:3306/base_api?useUnicode=true&characterEncoding=utf8           # 数据库连接地址
     username: root                                  # 数据库用户名
-    password: sparksubmit666                            # 数据库连接密码
+    password: P@ssw0rd                            # 数据库连接密码sparksubmit666
     dbcp2:                                          # 进行数据库连接池的配置
       min-idle: 5                                   # 数据库连接池的最小维持连接数    
       initial-size: 5                               # 初始化提供的连接数

@@ -5,8 +5,10 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import com.gauge.docdocker.model.RequestEntityModel;
 import com.gauge.docdocker.model.ResponseEntityModel;
 import com.gauge.docdocker.model.StatusEnum;
+import com.gauge.viewmodel.interface_parameter;
 import com.gauge.viewmodel.interface_parameter_case;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
@@ -21,13 +23,15 @@ import org.springframework.web.client.RestTemplate;
 
 @RestController
 public class ConsumerParamCaseController {
-     // 1）使用eureka之前，客户端直接操作微服务原始地址
-    	public static final String DEPT_GET_URL = "http://paramcase-21201.com:21201/case/get/";
-    	public static final String DEPT_GETBYID_URL = "http://paramcase-21201.com:21201/case/getById/";
-    	public static final String DEPT_LIST_URL = "http://paramcase-21201.com:21201/case/list/";
-        public static final String DEPT_LISTBYPM_URL = "http://paramcase-21201.com:21201/case/listbypm";
-    	public static final String DEPT_ADD_URL = "http://paramcase-21201.com:21201/case/add";
-        public static final String DEPT_EDITPLUS_URL = "http://paramcase-21201.com:21201/case/editplus";
+    // 1）使用eureka之前，客户端直接操作微服务原始地址
+    public static final String DEPT_GET_URL = "http://paramcase-21201.com:21201/case/get/";
+    public static final String DEPT_GETBYID_URL = "http://paramcase-21201.com:21201/case/getById/";
+    public static final String DEPT_LIST_URL = "http://paramcase-21201.com:21201/case/list/";
+    public static final String DEPT_PARAMETER_LIST_URL = "http://paramcase-21201.com:21201/parameter/list/";
+    public static final String DEPT_PARAMETER_URL = "http://paramcase-21201.com:21201/parameter/";
+    public static final String DEPT_LISTBYPM_URL = "http://paramcase-21201.com:21201/case/listbypm";
+    public static final String DEPT_ADD_URL = "http://paramcase-21201.com:21201/case/add";
+    public static final String DEPT_EDITPLUS_URL = "http://paramcase-21201.com:21201/case/editplus";
     //  2） 使用eureka之后，这里写的是在eureka中注册的服务名称，而非之前的原始服务地址！
 //    public static final String CASE_GET_URL = "http://MICROCLOUD-PROVIDER-CASE/case/get/";
 //    public static final String CASE_LIST_URL = "http://MICROCLOUD-PROVIDER-CASE/case/list/";
@@ -42,12 +46,52 @@ public class ConsumerParamCaseController {
     @Resource
     private HttpHeaders headers;
     @Resource
-    private LoadBalancerClient loadBalancerClient ;
+    private LoadBalancerClient loadBalancerClient;
 
-    @RequestMapping(value = "/consumer/case/add",method = RequestMethod.POST)
-    public Object add(@RequestBody interface_parameter_case vm){
+    @RequestMapping(value = "/consumer/parameter", method = RequestMethod.POST)
+    public Object parameterContrller(@RequestBody RequestEntityModel rq) {
+        String fn_url = "";
+        Object o = new Object();
+        HttpMethod h = HttpMethod.GET;
+        try {
+            if (rq != null) {
+                fn_url = DEPT_PARAMETER_URL + rq.function;
+                if (rq.method != null && rq.method.length() > 0) {
+                    switch (rq.method) {
+                        case "post":
+                            h = HttpMethod.POST;
+                            break;
+                        default:
+                            h = HttpMethod.GET;
+                    }
+                }
+                o = this.restTemplate.exchange(
+                        fn_url,
+                        h,
+                        new HttpEntity<Object>(rq.data, this.headers),
+                        Object.class).getBody();
+            } else {
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return o;
+    }
+
+    @RequestMapping(value = "/consumer/parameter/list", method = RequestMethod.GET)
+    public Object getParameterList() {
+        List<interface_parameter> list = this.restTemplate.exchange(
+                DEPT_PARAMETER_LIST_URL
+                , HttpMethod.GET
+                , new HttpEntity<Object>(this.headers)
+                , List.class).getBody();
+        return list;
+    }
+
+    @RequestMapping(value = "/consumer/case/add", method = RequestMethod.POST)
+    public Object add(@RequestBody interface_parameter_case vm) {
         boolean isSuccess = this.restTemplate.exchange(
-                DEPT_ADD_URL,HttpMethod.POST, new HttpEntity<Object>(vm, this.headers),Boolean.class)
+                DEPT_ADD_URL, HttpMethod.POST, new HttpEntity<Object>(vm, this.headers), Boolean.class)
                 .getBody();
         responseEntityModel.setData(isSuccess);
         responseEntityModel.setMessage("");
@@ -55,20 +99,20 @@ public class ConsumerParamCaseController {
         return responseEntityModel;
     }
 
-    @RequestMapping(value = "/consumer/case/editplus",method = RequestMethod.POST)
-    public Object editplus(@RequestBody interface_parameter_case vm){
+    @RequestMapping(value = "/consumer/case/editplus", method = RequestMethod.POST)
+    public Object editplus(@RequestBody interface_parameter_case vm) {
         boolean isSuccess = this.restTemplate.exchange(
                 // 请求URI,执行的HTTP方法,将请求实体写入请求, 返回实体
-                DEPT_EDITPLUS_URL,HttpMethod.POST, new HttpEntity<interface_parameter_case>(vm, this.headers),Boolean.class)
+                DEPT_EDITPLUS_URL, HttpMethod.POST, new HttpEntity<interface_parameter_case>(vm, this.headers), Boolean.class)
                 .getBody();
         return isSuccess;
     }
 
     @RequestMapping(value = "/consumer/case/listbypm")
-    public Object listByPm(String param_id){
+    public Object listByPm(String param_id) {
 
         List<interface_parameter_case> list = this.restTemplate
-                .exchange(DEPT_LISTBYPM_URL +"?param_id="+ param_id, HttpMethod.GET, new HttpEntity<Object>(this.headers), List.class)
+                .exchange(DEPT_LISTBYPM_URL + "?param_id=" + param_id, HttpMethod.GET, new HttpEntity<Object>(this.headers), List.class)
                 .getBody();
         return list;
 
@@ -78,14 +122,14 @@ public class ConsumerParamCaseController {
     public Object getCaseId(String key_id) {
 
         interface_parameter_case entity = this.restTemplate
-                .exchange(DEPT_GETBYID_URL + key_id, HttpMethod.GET,new HttpEntity<Object>(this.headers), interface_parameter_case.class)
+                .exchange(DEPT_GETBYID_URL + key_id, HttpMethod.GET, new HttpEntity<Object>(this.headers), interface_parameter_case.class)
                 .getBody();
         return entity;
     }
 
     @RequestMapping(value = "/consumer/case/get")
     public Object getCase(String code) {
-            // ServiceInstance serviceInstance = this.loadBalancerClient.choose("paramcase-21201.com:21201/") ;
+        // ServiceInstance serviceInstance = this.loadBalancerClient.choose("paramcase-21201.com:21201/") ;
         // 使用eureka之后，这里写的是在eureka中注册的服务名称，而非之前的原始服务地址！
         //ServiceInstance serviceInstance = this.loadBalancerClient.choose("MICROCLOUD-PROVIDER-CASE") ;
 //        ServiceInstance serviceInstance = this.loadBalancerClient.choose(DEPT_REST_TOPIC);
@@ -94,7 +138,7 @@ public class ConsumerParamCaseController {
 //                         + "、port = " + serviceInstance.getPort()
 //                         + "、serviceId = " + serviceInstance.getServiceId());
         interface_parameter_case entity = this.restTemplate
-                .exchange(DEPT_GET_URL + code, HttpMethod.GET,new HttpEntity<Object>(this.headers), interface_parameter_case.class)
+                .exchange(DEPT_GET_URL + code, HttpMethod.GET, new HttpEntity<Object>(this.headers), interface_parameter_case.class)
                 .getBody();
         return entity;
     }
@@ -134,8 +178,6 @@ public class ConsumerParamCaseController {
 //
 //        return allEntity;
 //    }
-
-
 
 
     @RequestMapping(value = "/consumer/case/add")

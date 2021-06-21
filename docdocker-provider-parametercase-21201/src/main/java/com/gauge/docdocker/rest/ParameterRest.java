@@ -5,14 +5,20 @@ import org.springframework.web.bind.annotation.*;
 import com.gauge.viewmodel.interface_parameter;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @RestController
 public class ParameterRest {
     @Resource
     private IParameterService iParameterService;
 
-    @RequestMapping(value = "/parameter/getEntity/{key_id}", method = RequestMethod.GET)
-    public interface_parameter getEntity(@PathVariable("key_id") String key_id) {
+    @RequestMapping(value = "/parameter/getList", method = RequestMethod.GET)
+    public List<interface_parameter> getList() {
+        return this.iParameterService.getList();
+    }
+
+    @RequestMapping(value = "/parameter/getEntity", method = RequestMethod.POST)
+    public interface_parameter getEntity(@RequestBody String key_id) {
         return this.iParameterService.getEntity(key_id);
     }
 

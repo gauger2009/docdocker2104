@@ -53,6 +53,12 @@
         FROM interface_parameter WHERE key_id=#{key_id,jdbcType=VARCHAR} ;
     </select>
 
+    <select id="getList" resultMap="IParameterResultMap">
+        SELECT
+        <include refid="IParamterColumn"/>
+        FROM interface_parameter;
+    </select>
+
     <update id="edit">
         update interface_parameter
         <set>

@@ -6,6 +6,7 @@ import com.gauge.viewmodel.interface_parameter;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class IParameterServiceImpl implements IParameterService {
@@ -15,6 +16,11 @@ public class IParameterServiceImpl implements IParameterService {
     @Override
     public interface_parameter getEntity(String key_id) {
         return this.iParameterDAO.getEntity(key_id);
+    }
+
+    @Override
+    public List<interface_parameter> getList() {
+        return this.iParameterDAO.getList();
     }
 
     @Override
